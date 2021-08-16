@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.MainActivity">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/meme_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="top|center" />
+
+    <ProgressBar
+        android:id="@+id/loading_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:indeterminateTint="@color/purple_500"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/load_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:background="@color/purple_500"
+        android:padding="16dp"
+        android:text="@string/load_more"
+        android:textColor="@color/white"
+        android:visibility="invisible" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
