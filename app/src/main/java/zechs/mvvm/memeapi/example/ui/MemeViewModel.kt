@@ -18,7 +18,7 @@ import java.io.IOException
 
 class MemeViewModel(
     app: Application,
-    private val memeRepository: MemeRepository
+    private val memeRepository: MemeRepository,
 ) : AndroidViewModel(app) {
 
     val memeList: MutableLiveData<Resource<MemeResponse>> = MutableLiveData()
@@ -50,7 +50,6 @@ class MemeViewModel(
     private fun handleLogsListResponse(response: Response<MemeResponse>): Resource<MemeResponse> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
-                pageCount += 20
                 if (memeListResponse == null) {
                     memeListResponse = resultResponse
                 } else {

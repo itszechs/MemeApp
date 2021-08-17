@@ -9,5 +9,5 @@ data class Meme(
     val subreddit: String,
     val title: String,
     val ups: Int,
-    val url: String
+    val url: String,
 )

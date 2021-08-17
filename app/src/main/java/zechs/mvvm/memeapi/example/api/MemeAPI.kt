@@ -11,7 +11,7 @@ interface MemeAPI {
     @GET("gimme/{count}")
     suspend fun getMemes(
         @Path("count")
-        count: Int
+        count: Int,
     ): Response<MemeResponse>
 
 }

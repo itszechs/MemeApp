@@ -9,7 +9,7 @@ import zechs.mvvm.memeapi.example.repository.MemeRepository
 @Suppress("UNCHECKED_CAST")
 class MemeViewModelProviderFactory(
     private val app: Application,
-    private val memeRepository: MemeRepository
+    private val memeRepository: MemeRepository,
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
