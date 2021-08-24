@@ -5,7 +5,6 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import zechs.mvvm.memeapi.example.models.MemeResponse
 
-
 interface MemeAPI {
 
     @GET("gimme/{count}")

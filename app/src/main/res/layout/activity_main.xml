@@ -3,32 +3,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/f6_white"
+    android:backgroundTint="@color/lightest_gray"
     tools:context=".ui.MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/meme_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="top|center" />
+        android:layout_gravity="top|center"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <ProgressBar
         android:id="@+id/loading_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:indeterminateTint="@color/purple_500"
+        android:layout_gravity="center"
+        android:indeterminateTint="@color/purple_blue"
         android:visibility="invisible" />
 
     <Button
-        android:id="@+id/load_more"
+        android:id="@+id/refresh_memes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
-        android:background="@color/purple_500"
+        android:background="@color/purple_blue"
         android:padding="16dp"
-        android:text="@string/load_more"
-        android:textColor="@color/white"
-        android:visibility="invisible" />
+        android:text="@string/refresh"
+        android:textColor="@color/white" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

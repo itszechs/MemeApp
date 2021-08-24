@@ -26,50 +26,52 @@ class MemeAdapter : RecyclerView.Adapter<MemeAdapter.MemeViewHolder>() {
         RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(meme: Meme) {
             context?.let {
-                if (meme.url.endsWith("png") or meme.url.endsWith("jpg")) {
-                    GlideApp.with(it)
-                        .asBitmap()
-                        .format(DecodeFormat.PREFER_ARGB_8888)
-                        .load(meme.url)
-                        .listener(object : RequestListener<Bitmap?> {
-                            override fun onLoadFailed(
-                                e: GlideException?,
-                                model: Any,
-                                target: Target<Bitmap?>,
-                                isFirstResource: Boolean,
-                            ): Boolean {
-                                return false
-                            }
-
-                            override fun onResourceReady(
-                                resource: Bitmap?,
-                                model: Any,
-                                target: Target<Bitmap?>,
-                                dataSource: DataSource,
-                                isFirstResource: Boolean,
-                            ): Boolean {
-                                itemBinding.root.setOnClickListener { _ ->
-                                    val i = Intent(Intent.ACTION_SEND)
-                                    val path =
-                                        MediaStore.Images.Media.insertImage(
-                                            it.contentResolver,
-                                            resource,
-                                            "",
-                                            null)
-
-                                    i.putExtra(Intent.EXTRA_STREAM, Uri.parse(path))
-                                    i.type = "image/*"
-
-                                    val chooserIntent =
-                                        Intent.createChooser(i, "Share image")
-                                    chooserIntent.flags = FLAG_ACTIVITY_NEW_TASK
-                                    i.putExtra(Intent.EXTRA_STREAM, Uri.parse(path))
-                                    it.startActivity(chooserIntent)
+                meme.url?.let { url ->
+                    if (url.endsWith("png") or url.endsWith("jpg")) {
+                        GlideApp.with(it)
+                            .asBitmap()
+                            .format(DecodeFormat.PREFER_ARGB_8888)
+                            .load(url)
+                            .listener(object : RequestListener<Bitmap?> {
+                                override fun onLoadFailed(
+                                    e: GlideException?,
+                                    model: Any,
+                                    target: Target<Bitmap?>,
+                                    isFirstResource: Boolean,
+                                ): Boolean {
+                                    return false
                                 }
-                                return false
-                            }
-                        })
-                        .into(itemBinding.imageView)
+
+                                override fun onResourceReady(
+                                    resource: Bitmap?,
+                                    model: Any,
+                                    target: Target<Bitmap?>,
+                                    dataSource: DataSource,
+                                    isFirstResource: Boolean,
+                                ): Boolean {
+                                    itemBinding.root.setOnClickListener { _ ->
+                                        val i = Intent(Intent.ACTION_SEND)
+                                        val path =
+                                            MediaStore.Images.Media.insertImage(
+                                                it.contentResolver,
+                                                resource,
+                                                "",
+                                                null)
+
+                                        i.putExtra(Intent.EXTRA_STREAM, Uri.parse(path))
+                                        i.type = "image/*"
+
+                                        val chooserIntent =
+                                            Intent.createChooser(i, "Share image")
+                                        chooserIntent.flags = FLAG_ACTIVITY_NEW_TASK
+                                        i.putExtra(Intent.EXTRA_STREAM, Uri.parse(path))
+                                        it.startActivity(chooserIntent)
+                                    }
+                                    return false
+                                }
+                            })
+                            .into(itemBinding.imageView)
+                    }
                 }
             }
         }

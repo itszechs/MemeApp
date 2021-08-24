@@ -1,8 +1,7 @@
 <resources>
 
-    <style name="Theme.RedditAPIMVVM" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="android:statusBarColor">@color/purple_500</item>
+    <style name="Theme.MemeApp" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/purple_blue</item>
+        <item name="android:statusBarColor">@color/purple_blue</item>
     </style>
 </resources>
